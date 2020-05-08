@@ -89,7 +89,7 @@ with open("choices.json") as json_file:
 reset()
 
 
-def annouce_victim(victim, build_suspense=3, update_interval=0.2):
+def announce_victim(victim, build_suspense=3, update_interval=0.2):
     build_suspense = int(build_suspense / update_interval)
     for x in range(1, build_suspense + 1):
         print("\r" + ("." * (x % 6) + "         "), end="")
@@ -107,12 +107,12 @@ while True:
         victim = sample()
         if victim != None:
             current_list.remove(victim)
-            annouce_victim(victim)
+            announce_victim(victim)
 
     elif answer == "Choose with Replacement":
         victim = sample()
         if victim != None:
-            annouce_victim(victim)
+            announce_victim(victim)
 
     elif answer == "List Available Victims":
         list_victims()
@@ -125,7 +125,7 @@ while True:
         dead_vic = select_from_list(
             choices, message="Choose the Victim that has to go...."
         )
-        perm = select_from_list(["Yes", "No"], message="Permanantly??")
+        perm = select_from_list(["Yes", "No"], message="Permanently??")
         remove_victim(dead_vic, perm == "Yes")
 
     elif answer == "Reset":
