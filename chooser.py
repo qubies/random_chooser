@@ -54,6 +54,9 @@ def reset():
 def sample():
     if len(current_list) <= 0:
         reset()
+    if len(current_list) <= 0:
+        print("Sorry, you'll have to add some choices first")
+        return "no one"
     return random.choice(current_list)
 
 
