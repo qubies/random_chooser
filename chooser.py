@@ -56,7 +56,7 @@ def sample():
         reset()
     if len(current_list) <= 0:
         print("Sorry, you'll have to add some choices first")
-        return "no one"
+        return None
     return random.choice(current_list)
 
 
@@ -105,11 +105,14 @@ while True:
 
     if answer == "Choose Without Replacement":
         victim = sample()
-        current_list.remove(victim)
-        annouce_victim(victim)
+        if victim != None:
+            current_list.remove(victim)
+            annouce_victim(victim)
 
     elif answer == "Choose with Replacement":
-        annouce_victim(sample())
+        victim = sample()
+        if victim != None:
+            annouce_victim(victim)
 
     elif answer == "List Available Victims":
         list_victims()
