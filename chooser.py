@@ -84,7 +84,6 @@ def temp_remove_victim(name):
 
 with open("choices.json") as json_file:
     choices = json.load(json_file)
-    print(choices)
 
 reset()
 
