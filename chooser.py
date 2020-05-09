@@ -6,6 +6,8 @@ from PyInquirer import prompt, print_json
 from os import system
 import cowsay
 
+chars = cowsay.chars
+
 {
     "type": "input",
     "name": "first_name",
@@ -94,7 +96,7 @@ def announce_victim(victim, build_suspense=3, update_interval=0.2):
         print("\r" + ("." * (x % 6) + "         "), end="")
         sleep(update_interval)
     print()
-    cowsay.tux(f"{random.choice(colors)}{victim}{reset_color} was Chosen!!")
+    random.choice(chars)(f"{random.choice(colors)}{victim}{reset_color} was Chosen!!")
     print()
     print()
 
