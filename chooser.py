@@ -17,6 +17,7 @@ chars = cowsay.chars
 menu_choices = [
     "Choose Without Replacement",
     "Choose with Replacement",
+    "A Random List of Available Victims Please!",
     "List Available Victims",
     "Add a Victim",
     "Remove a Victim",
@@ -53,11 +54,17 @@ def reset():
     current_list = list(choices)
 
 
-def sample():
+def validate():
     if len(current_list) <= 0:
         reset()
     if len(current_list) <= 0:
         print("Sorry, you'll have to add some choices first")
+        return False
+    return True
+
+
+def sample():
+    if not validate():
         return None
     return random.choice(current_list)
 
@@ -115,8 +122,16 @@ while True:
         if victim != None:
             announce_victim(victim)
 
+    elif answer == "A Random List of Available Victims Please!":
+        if validate():
+            random.shuffle(current_list)
+            print("--------------- Current Choices -----------------")
+            print("--------------- The Order is... -----------------")
+            announce_victim(f"{tabulate(enumerate(current_list))}")
+
     elif answer == "List Available Victims":
-        list_victims()
+        if validate():
+            list_victims()
 
     elif answer == "Add a Victim":
         new_vic = input("Please enter the victim: ")
